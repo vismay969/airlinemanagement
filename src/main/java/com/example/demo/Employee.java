@@ -2,5 +2,6 @@ package com.example.demo;
 
 public class Employee {
 
-    private int employeeid;
+    private Integer employeeid;
+    private String employeeName;
 }
