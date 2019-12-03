@@ -16,13 +16,12 @@ public class AirportService {
     @Autowired
     private MyRepository myRepository;
 
-    public AirportStruct addCatalog(@RequestBody AirportStruct airportStruct)
-    {
+    public AirportStruct addAirport(@RequestBody AirportStruct airportStruct) {
         return this.myRepository.save(airportStruct);
     }
 
 
-    public List<AirportStruct> findAll()
+    public List<AirportStruct> findAllAirport()
     {
         return this.myRepository.findAll();
     }
