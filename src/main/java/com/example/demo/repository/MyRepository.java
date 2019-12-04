@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MyRepository extends JpaRepository<AirportStruct,String> {
-
+//comment
 
 }
