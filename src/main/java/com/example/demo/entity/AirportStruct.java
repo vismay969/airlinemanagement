@@ -21,7 +21,7 @@ public class AirportStruct {
     @GeneratedValue(strategy = GenerationType.SEQUENCE )
     private Integer airport_id;
 
-    @Column(columnDefinition="varchar2(20)")
+    @Column(columnDefinition="varchar2(20)" )
     private String airportName;
 
     @Id
@@ -30,14 +30,5 @@ public class AirportStruct {
 
     @Column(columnDefinition="varchar2(40)")
     private String location;
-
-
-    @OneToMany(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "DEPT_ABBR", nullable = false)
-    private List<FlightMasterStruct> flightDeptList;
-
-    @OneToMany(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "ARR_ABBR", nullable = false)
-    private List<FlightMasterStruct> flightArrList;
 
 }

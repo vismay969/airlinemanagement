@@ -2,6 +2,7 @@ package com.example.demo.entity;
 import com.sun.istack.internal.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -21,7 +22,6 @@ public class FlightMasterStruct {
     @NotNull
     @Column(length = 20)
     private String airline;
-/*
 
     @NotNull
     @Column(length = 5)
@@ -30,14 +30,11 @@ public class FlightMasterStruct {
     @NotNull
     @Column(length = 5)
     private String arr_abbr;
-*/
 
     @Column(precision = 3)
     private int noOfSeats_first;
 
     @Column(precision = 3)
     private int noOfSeats_business;
-
-
 
 }
