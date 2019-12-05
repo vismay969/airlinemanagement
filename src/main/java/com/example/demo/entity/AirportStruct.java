@@ -30,14 +30,15 @@ public class AirportStruct {
 
     @Column(columnDefinition="varchar2(40)")
     private String location;
-
+/*
 
     @OneToMany(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "DEPT_ABBR", nullable = false)
+    @JoinColumn(name = "DEPTABBR", nullable = false)
     private List<FlightMasterStruct> flightDeptList;
 
     @OneToMany(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "ARR_ABBR", nullable = false)
+    @JoinColumn(name = "ARRABBR", nullable = false)
     private List<FlightMasterStruct> flightArrList;
+*/
 
 }

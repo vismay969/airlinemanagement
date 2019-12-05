@@ -5,41 +5,51 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
+import java.sql.Date;
+import java.sql.Timestamp;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "tstflightmaster")
-public class FlightMasterStruct {
+@Table(name = "tstflightdetail")
+public class FlightDetailStruct {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO )
     @Column(precision = 5)
-    private int flightNo ;
+    private int flight_sch_No ;
 
     @NotNull
     @Column(length = 20)
-    private String airline;
+    private Date dept_date;
 
     @NotNull
     @Column(length = 5)
-    private String deptAbbr;
+    private Timestamp dept_time;
 
     @NotNull
     @Column(length = 5)
-    private String arrAbbr;
+    private Date arr_date;
 
     @Column(precision = 3)
-    private int noOfSeats_first;
+    private Timestamp arr_time;
+
+    private double fare_first;
 
     @Column(precision = 3)
-    private int noOfSeats_business;
+    private int seats_booked_first;
 
-    @OneToMany(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "flightNo", nullable = false)
-    private List<FlightDetailStruct> flightDetailList;
+    private double fare_business;
+
+    @Column(precision = 3)
+    private int seats_booked_business;
+
+    @Column(precision = 1)
+    private String status_flag;
+
+
+
 
 
 }

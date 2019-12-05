@@ -2,10 +2,11 @@ package com.example.demo.controller;
 
 
 import com.example.demo.entity.AirportStruct;
+import com.example.demo.entity.FlightDetailStruct;
 import com.example.demo.entity.FlightMasterStruct;
 import com.example.demo.service.AirportService;
+import com.example.demo.service.FlightDetailService;
 import com.example.demo.service.FlightMasterService;
-import javafx.application.Application;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,22 +16,21 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class AirportController {
+public class FlightDetailController {
 
 
     @Autowired
-    private AirportService airportService;
+    private FlightDetailService flightDetailService;
 
-
-    @PostMapping(value = "/airport")
-    public AirportStruct addAirport(@RequestBody AirportStruct airportStruct) {
-            return this.airportService.addAirport(airportStruct);
+    @PostMapping(value = "/flightDetail")
+    public FlightDetailStruct addAirport(@RequestBody FlightDetailStruct flightDetailStruct) {
+            return this.flightDetailService.addFlightDetail(flightDetailStruct);
     }
 
-    @GetMapping(value ="/airport")
-    public List<AirportStruct> findAll()
+    @GetMapping(value ="/flightDetail")
+    public List<FlightDetailStruct> findAll()
     {
-        return this.airportService.findAllAirport();
+        return this.flightDetailService.findAllFlightDetails();
     }
 
 }
