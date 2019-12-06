@@ -18,7 +18,6 @@ import java.util.List;
 public class AirportStruct {
 
     @Column(precision = 5)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE )
     private Integer airport_id;
 
     @Column(columnDefinition="varchar2(20)" )

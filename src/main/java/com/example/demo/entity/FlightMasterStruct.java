@@ -15,7 +15,6 @@ import javax.persistence.*;
 public class FlightMasterStruct {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO )
     @Column(precision = 5)
     private int flightNo ;
 
