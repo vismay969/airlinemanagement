@@ -34,10 +34,10 @@ public class AirportController {
         return this.airportService.findAllAirport();
     }
 
-    @DeleteMapping(value="/airport/delete")
+  /*  @DeleteMapping(value="/airport/delete")
     public String deleteAirportById(@RequestBody AirportStruct airportStruct)
     {
         return this.airportService.deleteByLocationAbbr(airportStruct);
-    }
+    }*/
 
 }
