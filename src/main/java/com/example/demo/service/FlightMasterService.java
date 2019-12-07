@@ -1,9 +1,10 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.FlightMasterStruct;
-import com.example.demo.repository.RepositoryFlightMaster;
+import com.example.demo.repository.FlightMasterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -11,16 +12,21 @@ import java.util.List;
 public class FlightMasterService {
 
     @Autowired
-    private RepositoryFlightMaster repositoryFlightMaster;
+    private FlightMasterRepository fmRepo;
 
-    public FlightMasterStruct   addFlightMaster (FlightMasterStruct flightMasterStruct)
-    {
-        this.repositoryFlightMaster.save(flightMasterStruct);
-        return flightMasterStruct;
+    public FlightMasterStruct addFlightMaster(@RequestBody FlightMasterStruct flightMasterStruct) {
+        return this.fmRepo.save(flightMasterStruct);
     }
+
 
     public List<FlightMasterStruct> findAllFlightMaster()
     {
-        return this.repositoryFlightMaster.findAll();
+        return this.fmRepo.findAll();
     }
+
+    public List<FlightMasterStruct> findFlightMasterWithArrAndDept(String arr, String dept)
+    {
+        return this.fmRepo.findAll();
+    }
+
 }

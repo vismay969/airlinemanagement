@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -15,6 +16,7 @@ import javax.persistence.*;
 public class FlightMasterStruct {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE )
     @Column(precision = 5)
     private int flightNo ;
 
@@ -35,5 +37,11 @@ public class FlightMasterStruct {
 
     @Column(precision = 3)
     private int noOfSeats_business;
+
+
+    @OneToMany(cascade = CascadeType.ALL , fetch =FetchType.LAZY )
+    @JoinColumn(name = "flightNo", nullable = false)
+    private List<FlightDetailStruct> flightDetailList;
+
 
 }
