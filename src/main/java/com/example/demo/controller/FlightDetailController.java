@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 
 import com.example.demo.entity.AirportStruct;
+import com.example.demo.entity.FlightDetailStruct;
 import com.example.demo.entity.FlightMasterStruct;
 import com.example.demo.service.AirportService;
 import com.example.demo.service.FlightDetailService;
@@ -15,22 +16,21 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class FlightMasterController {
+public class FlightDetailController {
 
 
     @Autowired
-    private FlightMasterService flightMasterService;
+    private FlightDetailService flightDetailService;
 
-
-    @PostMapping(value = "/flightMaster")
-    public FlightMasterStruct addFlightMaster(@RequestBody FlightMasterStruct flightMasterStruct) {
-            return this.flightMasterService.addFlightMaster(flightMasterStruct);
+    @PostMapping(value = "/flightDetail")
+    public FlightDetailStruct addAirport(@RequestBody FlightDetailStruct flightDetailStruct) {
+            return this.flightDetailService.addFlightDetail(flightDetailStruct);
     }
 
-    @GetMapping(value ="/flightMaster")
-    public List<FlightMasterStruct> findAllFlightMaster()
+    @GetMapping(value ="/flightDetail")
+    public List<FlightDetailStruct> findAll()
     {
-        return this.flightMasterService.findAllFlightMaster();//findFlightMasterWithArrAndDept("bom","del");
+        return this.flightDetailService.findAllFlightDetails();
     }
 
 }
