@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -51,7 +52,9 @@ public class FlightDetailStruct {
     @Column(precision = 1)
     private String status_flag;
 
-
+    @OneToMany(cascade = CascadeType.ALL , fetch =FetchType.LAZY )
+    @JoinColumn(name = "flight_sch_No", nullable = false)
+    private List<BookinginfoStruct> bookinginfoList;
 
 
 
