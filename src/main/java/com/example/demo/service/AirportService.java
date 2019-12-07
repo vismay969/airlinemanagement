@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.AirportStruct;
+import com.example.demo.service.MyException;
 import com.example.demo.repository.MyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,14 +17,27 @@ public class AirportService {
     @Autowired
     private MyRepository myRepository;
 
-    public AirportStruct addAirport(@RequestBody AirportStruct airportStruct) {
-        return this.myRepository.save(airportStruct);
+    public AirportStruct addAirport(@RequestBody AirportStruct airportStruct) throws MyException {
+        return  this.myRepository.save(airportStruct);
     }
 
 
     public List<AirportStruct> findAllAirport()
     {
         return this.myRepository.findAll();
+
+    }
+
+
+    /** documentation */
+    public String deleteByLocationAbbr(AirportStruct airportStruct) {
+        String returnMessage="Airport not found for location abbr : ";
+        if (this.myRepository.existsById(airportStruct.getLocation_abbr()))
+        {
+            this.myRepository.delete(airportStruct);
+            returnMessage= "Airport Deleted";
+        }
+        return returnMessage;
     }
 
 }
