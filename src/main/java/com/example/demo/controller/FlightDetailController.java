@@ -8,10 +8,7 @@ import com.example.demo.service.AirportService;
 import com.example.demo.service.FlightDetailService;
 import com.example.demo.service.FlightMasterService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,7 +20,7 @@ public class FlightDetailController {
     private FlightDetailService flightDetailService;
 
     @PostMapping(value = "/flightDetail")
-    public FlightDetailStruct addAirport(@RequestBody FlightDetailStruct flightDetailStruct) {
+    public FlightDetailStruct addFlightDetail(@RequestBody FlightDetailStruct flightDetailStruct) {
             return this.flightDetailService.addFlightDetail(flightDetailStruct);
     }
 
@@ -33,4 +30,9 @@ public class FlightDetailController {
         return this.flightDetailService.findAllFlightDetails();
     }
 
+
+    @PutMapping(value = "/flightDetail")
+    public FlightDetailStruct updateFlightDetail(@RequestBody FlightDetailStruct flightDetailStruct) {
+        return this.flightDetailService.addFlightDetail(flightDetailStruct);
+    }
 }

@@ -12,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "tstflightmaster")
+@Table(name = "flightmaster")
 public class FlightMasterStruct {
 
     @Id
@@ -39,8 +39,9 @@ public class FlightMasterStruct {
     private int noOfSeats_business;
 
 
-    @OneToMany(cascade = CascadeType.ALL , fetch =FetchType.LAZY )
-    @JoinColumn(name = "flightNo", nullable = false)
+    // for testing  @OneToMany(cascade = CascadeType.ALL , fetch =FetchType.LAZY )
+    @OneToMany
+    @JoinColumn(name = "flightNo", nullable = false,insertable = false,updatable = false)
     private List<FlightDetailStruct> flightDetailList;
 
 

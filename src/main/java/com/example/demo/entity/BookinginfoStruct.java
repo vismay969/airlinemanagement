@@ -13,11 +13,17 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "tstBookingInfo")
+@Table(name = "BookingInfo")
 public class BookinginfoStruct {
 
 /*    @Column(precision = 5)
     private int flightNo ;*/
+
+    @Column(precision = 5 )
+    private int userId;
+
+    @Column(precision = 5)
+    private int flight_sch_No;
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE )
