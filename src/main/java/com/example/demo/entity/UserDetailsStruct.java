@@ -1,10 +1,7 @@
 package com.example.demo.entity;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -18,6 +15,7 @@ import java.util.List;
 //, uniqueConstraints = @UniqueConstraint(columnNames = {"location_abbr"}, name = "PK_LOCATION_ABBR"))
 
 public class UserDetailsStruct {
+
 
     @Id
     @Column(precision = 5)
@@ -52,5 +50,10 @@ public class UserDetailsStruct {
     @JoinColumn(name = "ARRABBR", nullable = false)
     private List<FlightMasterStruct> flightArrList;
 */
-
+public Integer getUserId() {
+    return userId;
+}
+    public String getUserName() {
+        return userName;
+    }
 }

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class UserDetailsController {
@@ -33,6 +34,8 @@ public class UserDetailsController {
     @PutMapping(value = "/user")
     public UserDetailsStruct UpdateUser(@RequestBody UserDetailsStruct userDetailsStruct) {
         System.out.println(userDetailsStruct);
+     //   Boolean userFound =  this.userDetailsService.findUserById(userDetailsStruct.getUserId());
+     //   System.out.println("=======================================" + userFound);
         return this.userDetailsService.addUser(userDetailsStruct);
     }
 
