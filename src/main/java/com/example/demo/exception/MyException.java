@@ -2,7 +2,7 @@ package com.example.demo.exception;
 
 
 import com.example.demo.util.ARSLogging;
-
+/*test line for push*/
 public class MyException extends Exception
 {
     public MyException() {
