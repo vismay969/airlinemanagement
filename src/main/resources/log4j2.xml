@@ -7,7 +7,7 @@
 		<File name="MyFile" fileName="logs/app.log">
 			<PatternLayout pattern="%d [%p] %20C - %L – %m  %highlight{%p}{FATAL=fg_yellow, ERROR=fg_red, WARN=fg_blue, INFO=fg_black, DEBUG=fg_green, TRACE=fg_blue} %n" />
 		</File>
-		<RollingFile name="ROLLING" fileName="logs/rollapp.log"
+		<RollingFile name="ROLLING" fileName="./logs/rollapp.log"
 					 filePattern="logs/rollapp-%d{MM-dd-yyyy}-%i.log">
             <PatternLayout pattern="%d [%p] %20C – %m %n"/>
             <Policies>
