@@ -1,8 +1,11 @@
 package com.example.demo.entity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.internal.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -52,10 +55,22 @@ public class FlightDetailStruct {
     @Column(precision = 1)
     private String status_flag;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "flightNo", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private FlightMasterStruct flightMaster;
+
+
     @OneToMany(cascade = CascadeType.ALL , fetch =FetchType.LAZY )
     @JoinColumn(name = "flight_sch_No", nullable = false)
     private List<BookinginfoStruct> bookinginfoList;
 
-
-
+    @JsonIgnore
+    public FlightMasterStruct getFlightMaster() {
+        return flightMaster;
+    }
+    @JsonIgnore
+    public void setFlightMaster(FlightMasterStruct flightMaster) {
+        this.flightMaster = flightMaster;
+    }
 }

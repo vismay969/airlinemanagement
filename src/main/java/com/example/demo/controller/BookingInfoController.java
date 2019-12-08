@@ -22,7 +22,7 @@ public class BookingInfoController {
 
 
     @PostMapping(value = "/bookingInfo")
-    public BookinginfoStruct addAirport(@RequestBody BookinginfoStruct bookinginfoStruct) {
+    public BookinginfoStruct addBookingInfo(@RequestBody BookinginfoStruct bookinginfoStruct) {
             return this.bookingInfoService.addBooking(bookinginfoStruct);
     }
 

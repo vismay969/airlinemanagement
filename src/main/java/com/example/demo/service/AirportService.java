@@ -14,7 +14,7 @@ public class AirportService {
     @Autowired
     private AirportRepository myRepository;
 
-    public AirportStruct addAirport(@RequestBody AirportStruct airportStruct) {
+    public AirportStruct addAirport( AirportStruct airportStruct) {
         return this.myRepository.save(airportStruct);
     }
 
