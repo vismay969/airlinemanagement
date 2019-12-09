@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class FlightDetailController {
@@ -20,21 +19,20 @@ public class FlightDetailController {
     @Autowired
     private FlightDetailService flightDetailService;
 
-    @PostMapping(value = "/{flightNo}/flightDetail")
-    public FlightDetailStruct addFlightDetail(@PathVariable(value = "flightNo") Integer flightNo, @RequestBody FlightDetailStruct flightDetailStruct) {
-            return this.flightDetailService.addFlightDetail(flightNo,flightDetailStruct);
+    @PostMapping(value = "/flightDetail")
+    public FlightDetailStruct addFlightDetail(@RequestBody FlightDetailStruct flightDetailStruct) {
+            return this.flightDetailService.addFlightDetail(flightDetailStruct);
     }
 
     @GetMapping(value ="/flightDetail")
-    public List<FlightDetailStruct> findAllFlightDetail()
+    public List<FlightDetailStruct> findAll()
     {
         return this.flightDetailService.findAllFlightDetails();
     }
 
 
-    @GetMapping(value ="/flightDetail/{flightSchNo}")
-    public Optional<FlightDetailStruct> findFlightDetailById(@PathVariable(value = "flightSchNo") Integer flightSchNo)
-    {
-        return this.flightDetailService.getFlightDetailsById(flightSchNo);
+    @PutMapping(value = "/flightDetail")
+    public FlightDetailStruct updateFlightDetail(@RequestBody FlightDetailStruct flightDetailStruct) {
+        return this.flightDetailService.addFlightDetail(flightDetailStruct);
     }
 }
