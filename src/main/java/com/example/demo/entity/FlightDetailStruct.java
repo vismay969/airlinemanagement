@@ -13,11 +13,11 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "tstflightdetail")
+@Table(name = "flightdetail")
 public class FlightDetailStruct {
 
-/*    @Column(precision = 5)
-    private int flightNo ;*/
+   @Column(precision = 5)
+    private int flightNo ;
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE )
@@ -52,10 +52,10 @@ public class FlightDetailStruct {
     @Column(precision = 1)
     private String status_flag;
 
-    @OneToMany(cascade = CascadeType.ALL , fetch =FetchType.LAZY )
-    @JoinColumn(name = "flight_sch_No", nullable = false)
+   // for testing @OneToMany(cascade = CascadeType.ALL , fetch =FetchType.LAZY )
+    @OneToMany
+    @JoinColumn(name = "flight_sch_No", nullable = false, insertable = false, updatable = false)
     private List<BookinginfoStruct> bookinginfoList;
-
 
 
 }

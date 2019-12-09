@@ -1,8 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.AirportStruct;
 import com.example.demo.entity.UserDetailsStruct;
-import com.example.demo.repository.AirportRepository;
 import com.example.demo.repository.UserDetailsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,5 +23,12 @@ public class UserDetailsService {
     {
         return this.userDetailsRepository.findAll();
     }
+
+    public boolean findUserById(Integer userid)
+    {
+        /*return this.userDetailsRepository.existsById(userid);*/
+        return false;
+    }
+
 
 }

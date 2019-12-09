@@ -7,10 +7,7 @@ import com.example.demo.service.AirportService;
 import com.example.demo.service.FlightMasterService;
 import javafx.application.Application;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,6 +28,13 @@ public class AirportController {
     public List<AirportStruct> findAll()
     {
         return this.airportService.findAllAirport();
+    }
+
+
+    @PutMapping(value = "/airport")
+    public AirportStruct updateAirport(@RequestBody AirportStruct airportStruct) {
+        System.out.println(airportStruct);
+        return this.airportService.addAirport(airportStruct);
     }
 
 }

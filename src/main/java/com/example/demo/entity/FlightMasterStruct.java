@@ -2,6 +2,7 @@ package com.example.demo.entity;
 import com.sun.istack.internal.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -11,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "tstflightmaster")
+@Table(name = "flightmaster")
 public class FlightMasterStruct {
 
     @Id
@@ -37,8 +38,10 @@ public class FlightMasterStruct {
     @Column(precision = 3)
     private int noOfSeats_business;
 
-    @OneToMany(cascade = CascadeType.ALL , fetch =FetchType.LAZY )
-    @JoinColumn(name = "flightNo", nullable = false)
+
+    // for testing  @OneToMany(cascade = CascadeType.ALL , fetch =FetchType.LAZY )
+    @OneToMany
+    @JoinColumn(name = "flightNo", nullable = false,insertable = false,updatable = false)
     private List<FlightDetailStruct> flightDetailList;
 
 
