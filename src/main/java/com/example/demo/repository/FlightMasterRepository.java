@@ -13,5 +13,5 @@ public interface FlightMasterRepository extends JpaRepository<FlightMasterStruct
 
 
 
-    List<FlightMasterStruct> findByArrAbbrAndDeptAbbr(String arr, String dept);
+    //List<FlightMasterStruct> findByArrAbbrAndDeptAbbr(String arr, String dept);
 }

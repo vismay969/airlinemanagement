@@ -1,9 +1,7 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.AirportStruct;
 import com.example.demo.entity.FlightMasterStruct;
 import com.example.demo.repository.FlightMasterRepository;
-import com.example.demo.repository.MyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,7 +14,7 @@ public class FlightMasterService {
     @Autowired
     private FlightMasterRepository fmRepo;
 
-    public FlightMasterStruct addFlightMaster(@RequestBody FlightMasterStruct flightMasterStruct) {
+    public FlightMasterStruct addFlightMaster( FlightMasterStruct flightMasterStruct) {
         return this.fmRepo.save(flightMasterStruct);
     }
 
@@ -26,9 +24,9 @@ public class FlightMasterService {
         return this.fmRepo.findAll();
     }
 
-    public List<FlightMasterStruct> findFlightMasterWithArrAndDept(String arr, String dept)
+/*    public List<FlightMasterStruct> findFlightMasterWithArrAndDept(String arr, String dept)
     {
-        return this.fmRepo.findByArrAbbrAndDeptAbbr(arr,dept);
-    }
+        return this.fmRepo.findAll();
+    }*/
 
 }

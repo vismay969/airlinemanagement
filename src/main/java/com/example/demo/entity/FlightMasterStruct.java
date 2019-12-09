@@ -15,7 +15,7 @@ import java.util.List;
 public class FlightMasterStruct {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO )
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(precision = 5)
     private int flightNo ;
 
@@ -25,11 +25,11 @@ public class FlightMasterStruct {
 
     @NotNull
     @Column(length = 5)
-    private String deptAbbr;
+    private String dept_abbr;
 
     @NotNull
     @Column(length = 5)
-    private String arrAbbr;
+    private String arr_abbr;
 
     @Column(precision = 3)
     private int noOfSeats_first;
@@ -37,8 +37,9 @@ public class FlightMasterStruct {
     @Column(precision = 3)
     private int noOfSeats_business;
 
-    @OneToMany(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "flightNo", nullable = false)
+   // @OneToMany(cascade = CascadeType.ALL , fetch =FetchType.LAZY )
+    @OneToMany(mappedBy = "flightMaster" ,fetch=FetchType.LAZY)
+    /*@JoinColumn(name = "flightNo", nullable = false)*/
     private List<FlightDetailStruct> flightDetailList;
 
 

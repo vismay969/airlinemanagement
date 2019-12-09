@@ -8,12 +8,10 @@ import com.example.demo.service.AirportService;
 import com.example.demo.service.FlightDetailService;
 import com.example.demo.service.FlightMasterService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class FlightDetailController {
@@ -22,15 +20,21 @@ public class FlightDetailController {
     @Autowired
     private FlightDetailService flightDetailService;
 
-    @PostMapping(value = "/flightDetail")
-    public FlightDetailStruct addAirport(@RequestBody FlightDetailStruct flightDetailStruct) {
-            return this.flightDetailService.addFlightDetail(flightDetailStruct);
+    @PostMapping(value = "/{flightNo}/flightDetail")
+    public FlightDetailStruct addFlightDetail(@PathVariable(value = "flightNo") Integer flightNo, @RequestBody FlightDetailStruct flightDetailStruct) {
+            return this.flightDetailService.addFlightDetail(flightNo,flightDetailStruct);
     }
 
     @GetMapping(value ="/flightDetail")
-    public List<FlightDetailStruct> findAll()
+    public List<FlightDetailStruct> findAllFlightDetail()
     {
         return this.flightDetailService.findAllFlightDetails();
     }
 
+
+    @GetMapping(value ="/flightDetail/{flightSchNo}")
+    public Optional<FlightDetailStruct> findFlightDetailById(@PathVariable(value = "flightSchNo") Integer flightSchNo)
+    {
+        return this.flightDetailService.getFlightDetailsById(flightSchNo);
+    }
 }
