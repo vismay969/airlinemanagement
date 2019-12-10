@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 public class AirportController {
 
 
@@ -35,6 +36,12 @@ public class AirportController {
     public AirportStruct updateAirport(@RequestBody AirportStruct airportStruct) {
         System.out.println(airportStruct);
         return this.airportService.addAirport(airportStruct);
+    }
+
+    @DeleteMapping(value = "/airport")
+    public Boolean deleteAirport(@RequestBody AirportStruct airportStruct) {
+        System.out.println(airportStruct);
+        return this.airportService.deleteAirport(airportStruct);
     }
 
 }

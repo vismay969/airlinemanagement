@@ -24,4 +24,13 @@ public class AirportService {
         return this.airportRepository.findAll();
     }
 
+    public Boolean deleteAirport(AirportStruct airportStruct) {
+        boolean rowDeleted=false;
+        if (this.airportRepository.existsById(airportStruct.getLocation_abbr()))
+        {
+            this.airportRepository.delete(airportStruct);
+            rowDeleted=true;
+        }
+        return rowDeleted;
+    }
 }
