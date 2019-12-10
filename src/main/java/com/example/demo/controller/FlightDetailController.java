@@ -21,7 +21,7 @@ public class FlightDetailController {
 
     @PostMapping(value = "/flightDetail")
     public FlightDetailStruct addFlightDetail(@RequestBody FlightDetailStruct flightDetailStruct) {
-            return this.flightDetailService.addFlightDetail(flightDetailStruct);
+            return this.flightDetailService.addFlightDetail(1, flightDetailStruct);
     }
 
     @GetMapping(value ="/flightDetail")
@@ -33,6 +33,6 @@ public class FlightDetailController {
 
     @PutMapping(value = "/flightDetail")
     public FlightDetailStruct updateFlightDetail(@RequestBody FlightDetailStruct flightDetailStruct) {
-        return this.flightDetailService.addFlightDetail(flightDetailStruct);
+        return this.flightDetailService.addFlightDetail(1, flightDetailStruct);
     }
 }

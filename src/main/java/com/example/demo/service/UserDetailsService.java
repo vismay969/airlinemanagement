@@ -14,7 +14,7 @@ public class UserDetailsService {
     @Autowired
     private UserDetailsRepository userDetailsRepository;
 
-    public UserDetailsStruct addUser(@RequestBody UserDetailsStruct userDetailsStruct) {
+    public UserDetailsStruct addUser( UserDetailsStruct userDetailsStruct) {
         return this.userDetailsRepository.save(userDetailsStruct);
     }
 
