@@ -58,4 +58,6 @@ public class FlightDetailStruct {
     private List<BookinginfoStruct> bookinginfoList;
 
 
+    public void setFlightMaster(FlightMasterStruct flightMaster) {
+    }
 }
