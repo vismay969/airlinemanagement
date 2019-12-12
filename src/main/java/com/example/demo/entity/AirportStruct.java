@@ -19,14 +19,16 @@ public class AirportStruct {
 
 
     @Column(precision = 5)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE )
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "airportGenerator")
+    @SequenceGenerator(name = "airportGenerator", sequenceName = "airport_id_seq" , allocationSize = 1)
+    @Id
     private Integer airport_id;
 
     @Column(columnDefinition="varchar2(20)")
     private String airportName;
 
-    @Id
-    @Column(columnDefinition="varchar2(10)")
+
+    @Column(columnDefinition="varchar2(10)", nullable = false , unique = true)
     private String location_abbr;
 
     @Column(columnDefinition="varchar2(40)")

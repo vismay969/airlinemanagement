@@ -11,12 +11,12 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "tstflightmaster")
+@Table(name = "flightmaster")
 public class FlightMasterStruct {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "flightNoGenerator")
-    @SequenceGenerator(name = "flightNoGenerator", sequenceName = "TSTFLIGHTNO_SEQ1")
+    @SequenceGenerator(name = "flightNoGenerator", sequenceName = "flightno_seq"  , allocationSize = 1)
     @Column(precision = 5)
     private int flightNo ;
 

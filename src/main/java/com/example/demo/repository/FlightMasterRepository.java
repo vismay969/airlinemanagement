@@ -15,6 +15,6 @@ public interface FlightMasterRepository extends JpaRepository<FlightMasterStruct
 //comment
 
 
-    @Query(value = "select fm FROM FlightMasterStruct as fm LEFT join fm.flightDetailList as fd where  fd.seats_booked_business>?1 and fm.arr_abbr=?2 and fm.dept_abbr=?3  and fd.dept_date=?4")
+    @Query(value = "select fm FROM FlightMasterStruct as fm LEFT join fm.flightDetailList as fd where  fd.seats_remaining_business>?1 and fm.arr_abbr=?2 and fm.dept_abbr=?3  and fd.dept_date=?4")
     public Optional<FlightMasterStruct> findAllWithArrDeptDate(int seatsRemaining, String arr, String dept, Date depDate);
 }

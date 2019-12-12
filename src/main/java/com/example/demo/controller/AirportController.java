@@ -37,11 +37,11 @@ public class AirportController {
         System.out.println(airportStruct);
         return this.airportService.addAirport(airportStruct);
     }
-
+/*
     @DeleteMapping(value = "/airport")
     public Boolean deleteAirport(@RequestBody AirportStruct airportStruct) {
         System.out.println(airportStruct);
         return this.airportService.deleteAirport(airportStruct);
-    }
+    }*/
 
 }
