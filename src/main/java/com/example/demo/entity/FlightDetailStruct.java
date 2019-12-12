@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -26,6 +26,7 @@ public class FlightDetailStruct {
 
     @NotNull
     @Column(length = 20)
+    @Temporal(TemporalType.DATE)
     private Date dept_date;
 
     @NotNull

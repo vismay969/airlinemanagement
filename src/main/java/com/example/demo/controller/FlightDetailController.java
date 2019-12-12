@@ -36,4 +36,6 @@ public class FlightDetailController {
     public FlightDetailStruct updateFlightDetail(@RequestBody FlightDetailStruct flightDetailStruct) {
         return this.flightDetailService.addFlightDetail(1, flightDetailStruct);
     }
+
+
 }
