@@ -6,7 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FlightMasterService {
@@ -24,6 +27,9 @@ public class FlightMasterService {
         return this.fmRepo.findAll();
     }
 
+    public Optional<FlightMasterStruct> findAllWithArrDeptDate(int seatsRem, String arr, String dept, Date deptDate) {
+        return this.fmRepo.findAllWithArrDeptDate(seatsRem, arr, dept, deptDate);
+    }
 /*    public List<FlightMasterStruct> findFlightMasterWithArrAndDept(String arr, String dept)
     {
         return this.fmRepo.findAll();

@@ -15,7 +15,8 @@ import java.util.List;
 public class FlightMasterStruct {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "flightNoGenerator")
+    @SequenceGenerator(name = "flightNoGenerator", sequenceName = "TSTFLIGHTNO_SEQ1")
     @Column(precision = 5)
     private int flightNo ;
 

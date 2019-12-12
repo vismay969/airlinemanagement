@@ -37,4 +37,6 @@ public class FlightDetailController {
     {
         return this.flightDetailService.getFlightDetailsById(flightSchNo);
     }
+
+
 }
