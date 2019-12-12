@@ -1,10 +1,7 @@
 package com.example.demo.entity;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,20 +11,24 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 @Entity
+@Getter
 @Table(name = "airport")
 //, uniqueConstraints = @UniqueConstraint(columnNames = {"location_abbr"}, name = "PK_LOCATION_ABBR"))
 
 public class AirportStruct {
 
+
     @Column(precision = 5)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE )
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "airportGenerator")
+    @SequenceGenerator(name = "airportGenerator", sequenceName = "airport_id_seq" , allocationSize = 1)
+    @Id
     private Integer airport_id;
 
     @Column(columnDefinition="varchar2(20)")
     private String airportName;
 
-    @Id
-    @Column(columnDefinition="varchar2(10)")
+
+    @Column(columnDefinition="varchar2(10)", nullable = false , unique = true)
     private String location_abbr;
 
     @Column(columnDefinition="varchar2(40)")

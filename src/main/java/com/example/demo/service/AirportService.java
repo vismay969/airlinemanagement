@@ -12,16 +12,16 @@ import java.util.List;
 public class AirportService {
 
     @Autowired
-    private AirportRepository airportRepository;
+    private AirportRepository myRepository;
 
-    public AirportStruct addAirport(@RequestBody AirportStruct airportStruct) {
-        return this.airportRepository.save(airportStruct);
+    public AirportStruct addAirport( AirportStruct airportStruct) {
+        return this.myRepository.save(airportStruct);
     }
 
 
     public List<AirportStruct> findAllAirport()
     {
-        return this.airportRepository.findAll();
+        return this.myRepository.findAll();
     }
 
 }

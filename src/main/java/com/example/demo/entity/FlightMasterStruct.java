@@ -2,7 +2,6 @@ package com.example.demo.entity;
 import com.sun.istack.internal.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -16,7 +15,8 @@ import java.util.List;
 public class FlightMasterStruct {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE )
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "flightNoGenerator")
+    @SequenceGenerator(name = "flightNoGenerator", sequenceName = "flightno_seq"  , allocationSize = 1)
     @Column(precision = 5)
     private int flightNo ;
 
@@ -38,10 +38,9 @@ public class FlightMasterStruct {
     @Column(precision = 3)
     private int noOfSeats_business;
 
-
-    // for testing  @OneToMany(cascade = CascadeType.ALL , fetch =FetchType.LAZY )
-    @OneToMany
-    @JoinColumn(name = "flightNo", nullable = false,insertable = false,updatable = false)
+   // @OneToMany(cascade = CascadeType.ALL , fetch =FetchType.LAZY )
+    @OneToMany(mappedBy = "flightMaster" ,fetch=FetchType.LAZY)
+    /*@JoinColumn(name = "flightNo", nullable = false)*/
     private List<FlightDetailStruct> flightDetailList;
 
 

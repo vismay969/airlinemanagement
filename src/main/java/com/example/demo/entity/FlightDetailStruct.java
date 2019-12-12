@@ -1,11 +1,14 @@
 package com.example.demo.entity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.internal.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -16,16 +19,18 @@ import java.util.List;
 @Table(name = "flightdetail")
 public class FlightDetailStruct {
 
-   @Column(precision = 5)
-    private int flightNo ;
+/*    @Column(precision = 5)
+    private int flightNo ;*/
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE )
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "flightschnoGenerator")
+    @SequenceGenerator(name = "flightschnoGenerator", sequenceName = "flight_sch_no_seq"  , allocationSize = 1)
     @Column(precision = 5)
     private int flight_sch_No ;
 
     @NotNull
     @Column(length = 20)
+    @Temporal(TemporalType.DATE)
     private Date dept_date;
 
     @NotNull
@@ -34,6 +39,7 @@ public class FlightDetailStruct {
 
     @NotNull
     @Column(length = 5)
+    @Temporal(TemporalType.DATE)
     private Date arr_date;
 
     @Column(precision = 3)
@@ -42,20 +48,32 @@ public class FlightDetailStruct {
     private double fare_first;
 
     @Column(precision = 3)
-    private int seats_booked_first;
+    private int seats_remaining_first;
 
     private double fare_business;
 
     @Column(precision = 3)
-    private int seats_booked_business;
+    private int seats_remaining_business;
 
-    @Column(precision = 1)
+    @Column(precision = 1, length = 1)
+
     private String status_flag;
 
-   // for testing @OneToMany(cascade = CascadeType.ALL , fetch =FetchType.LAZY )
-    @OneToMany
-    @JoinColumn(name = "flight_sch_No", nullable = false, insertable = false, updatable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "flightNo", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private FlightMasterStruct flightMaster;
+
+
+    @OneToMany(mappedBy = "flightDetailStruct" , fetch =FetchType.LAZY )
     private List<BookinginfoStruct> bookinginfoList;
 
-
+    @JsonIgnore
+    public FlightMasterStruct getFlightMaster() {
+        return flightMaster;
+    }
+    @JsonIgnore
+    public void setFlightMaster(FlightMasterStruct flightMaster) {
+        this.flightMaster = flightMaster;
+    }
 }
