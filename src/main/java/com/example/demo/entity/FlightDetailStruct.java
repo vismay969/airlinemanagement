@@ -16,14 +16,15 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "tstflightdetail")
+@Table(name = "flightdetail")
 public class FlightDetailStruct {
 
 /*    @Column(precision = 5)
     private int flightNo ;*/
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE )
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "flightschnoGenerator")
+    @SequenceGenerator(name = "flightschnoGenerator", sequenceName = "flight_sch_no_seq"  , allocationSize = 1)
     @Column(precision = 5)
     private int flight_sch_No ;
 
@@ -38,6 +39,7 @@ public class FlightDetailStruct {
 
     @NotNull
     @Column(length = 5)
+    @Temporal(TemporalType.DATE)
     private Date arr_date;
 
     @Column(precision = 3)
@@ -46,14 +48,15 @@ public class FlightDetailStruct {
     private double fare_first;
 
     @Column(precision = 3)
-    private int seats_booked_first;
+    private int seats_remaining_first;
 
     private double fare_business;
 
     @Column(precision = 3)
-    private int seats_booked_business;
+    private int seats_remaining_business;
 
-    @Column(precision = 1)
+    @Column(precision = 1, length = 1)
+
     private String status_flag;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -62,8 +65,7 @@ public class FlightDetailStruct {
     private FlightMasterStruct flightMaster;
 
 
-    @OneToMany(cascade = CascadeType.ALL , fetch =FetchType.LAZY )
-    @JoinColumn(name = "flight_sch_No", nullable = false)
+    @OneToMany(mappedBy = "flightDetailStruct" , fetch =FetchType.LAZY )
     private List<BookinginfoStruct> bookinginfoList;
 
     @JsonIgnore

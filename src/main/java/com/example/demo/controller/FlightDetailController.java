@@ -20,7 +20,7 @@ public class FlightDetailController {
     @Autowired
     private FlightDetailService flightDetailService;
 
-    @PostMapping(value = "/{flightNo}/flightDetail")
+    @PostMapping(value = "/flightDetail/{flightNo}")
     public FlightDetailStruct addFlightDetail(@PathVariable(value = "flightNo") Integer flightNo, @RequestBody FlightDetailStruct flightDetailStruct) {
             return this.flightDetailService.addFlightDetail(flightNo,flightDetailStruct);
     }
