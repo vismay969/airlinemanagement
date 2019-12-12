@@ -16,7 +16,7 @@ public class BookingInfoService {
     @Autowired
     private BookingInfoRepository bookingInfoRepository;
 
-    public BookinginfoStruct addBooking(@RequestBody BookinginfoStruct bookinginfoStruct) {
+    public BookinginfoStruct addBooking( BookinginfoStruct bookinginfoStruct) {
         return this.bookingInfoRepository.save(bookinginfoStruct);
     }
 
