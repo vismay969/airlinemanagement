@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 
+import com.example.demo.datamapping.SearchFlightStruct;
 import com.example.demo.entity.AirportStruct;
 import com.example.demo.entity.FlightMasterStruct;
 import com.example.demo.service.AirportService;
@@ -37,10 +38,11 @@ public class FlightMasterController {
         return this.flightMasterService.findAllFlightMaster();//findFlightMasterWithArrAndDept("bom","del");
     }
 
-    @GetMapping(value = "/flightMaster/{seatsRem}/{arr}/{dept}/{deptDate}")
-    public Optional<FlightMasterStruct> findAllWithArrDeptDate(@PathVariable(value = "seatsRem") int seatsRemaining,
-   @PathVariable(value = "arr") String arr, @PathVariable(value = "dept") String dept,
-       @PathVariable(value = "deptDate") @DateTimeFormat(pattern = "yyyy-MM-dd")  LocalDate deptDate) {
+    @GetMapping(value = "/flightMaster/{seatsRemBus}/{seatsRemFirst}/{arr}/{dept}/{deptDate}")
+    public List<SearchFlightStruct> findAllWithArrDeptDate(@PathVariable(value = "seatsRemBus") int seatsRemainingBusiness,
+                                                           @PathVariable(value = "seatsRemFirst") int seatsRemainingFirst,
+                                                               @PathVariable(value = "arr") String arr, @PathVariable(value = "dept") String dept,
+                                                               @PathVariable(value = "deptDate") @DateTimeFormat(pattern = "yyyy-MM-dd")  LocalDate deptDate) {
 /*        Date depDate = null;
         try {
             System.out.println(deptDate);
@@ -49,6 +51,6 @@ public class FlightMasterController {
         } catch (ParseException e) {
             e.printStackTrace();
         }*/
-        return this.flightMasterService.findAllWithArrDeptDate(seatsRemaining, arr, dept, deptDate);
+        return this.flightMasterService.findAllWithArrDeptDate(seatsRemainingBusiness, seatsRemainingFirst, arr, dept, deptDate);
     }
 }

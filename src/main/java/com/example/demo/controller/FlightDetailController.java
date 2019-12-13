@@ -1,13 +1,8 @@
 package com.example.demo.controller;
 
 
-import com.example.demo.entity.AirportStruct;
 import com.example.demo.entity.FlightDetailStruct;
-import com.example.demo.entity.FlightMasterStruct;
-import com.example.demo.exception.MyResourceNotFoundException;
-import com.example.demo.service.AirportService;
 import com.example.demo.service.FlightDetailService;
-import com.example.demo.service.FlightMasterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -38,13 +33,7 @@ public class FlightDetailController {
     @GetMapping(value ="/flightDetail/{flightSchNo}")
     public Optional<FlightDetailStruct> findFlightDetailById(@PathVariable(value = "flightSchNo") Integer flightSchNo)
     {
-        try{
             return this.flightDetailService.getFlightDetailsById(flightSchNo);
-        }
-        catch (MyResourceNotFoundException exc) {
-        throw new ResponseStatusException(
-                HttpStatus.NOT_FOUND, "Data Not Found", exc);
-    }
     }
 
 

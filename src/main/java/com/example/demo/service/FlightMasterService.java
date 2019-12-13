@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.datamapping.SearchFlightStruct;
 import com.example.demo.entity.FlightMasterStruct;
 import com.example.demo.repository.FlightMasterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,12 +29,12 @@ public class FlightMasterService {
         return this.fmRepo.findAll();
     }
 
-    public Optional<FlightMasterStruct> findAllWithArrDeptDate(int seatsRem, String arr, String dept, LocalDate deptDate) {
-        String formattedDate = deptDate.format(DateTimeFormatter.ofPattern("dd-MMM-yyyy"));
+    public List<SearchFlightStruct> findAllWithArrDeptDate(int seatsRemainingBusiness, int seatsRemainingFirst,  String arr, String dept, LocalDate deptDate) {
+      /*  String formattedDate = deptDate.format(DateTimeFormatter.ofPattern("dd-MMM-yyyy"));
         System.out.println(formattedDate);
         LocalDate localDate = LocalDate.parse( formattedDate , DateTimeFormatter.ofPattern("dd-MMM-yyyy"));        //2018-07-14
-        System.out.println(localDate);
-           return this.fmRepo.findAllWithArrDeptDate(seatsRem, arr, dept, localDate);
+        System.out.println(localDate);*/
+       return this.fmRepo.findAllWithArrDeptDate(seatsRemainingBusiness, seatsRemainingFirst, arr, dept, deptDate);
 /*
             return this.fmRepo.findAllFlightsByDate(seatsRem, arr, dept, localDate);
 */
