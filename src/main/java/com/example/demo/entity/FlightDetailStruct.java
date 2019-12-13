@@ -1,15 +1,18 @@
 package com.example.demo.entity;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.internal.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.tomcat.jni.Local;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -30,20 +33,29 @@ public class FlightDetailStruct {
 
     @NotNull
     @Column(length = 20)
+/*
     @Temporal(TemporalType.DATE)
-    private Date dept_date;
+*/
+    /*@JsonFormat(pattern = "yyyy-MM-dd" , timezone = "Asia/Kolkata")*/
+    private LocalDate dept_date;
 
     @NotNull
     @Column(length = 5)
-    private Timestamp dept_time;
+    /*@JsonFormat(timezone = "Asia/Kolkata" )*/
+    private LocalDateTime dept_time;
 
     @NotNull
     @Column(length = 5)
+   /* @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Kolkata")*/
+    /*    
+
     @Temporal(TemporalType.DATE)
-    private Date arr_date;
+*/
+    private LocalDate arr_date;
 
     @Column(precision = 3)
-    private Timestamp arr_time;
+   /* @JsonFormat(timezone = "Asia/Kolkata" )*/
+    private LocalDateTime arr_time;
 
     private double fare_first;
 
