@@ -10,6 +10,7 @@ import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -36,7 +37,7 @@ public class BookinginfoStruct {
 
     @NotNull
     @Column(length = 20)
-    private Date flight_date;
+    private LocalDate flight_date;
 
     @NotNull
     @Column(length = 30)
