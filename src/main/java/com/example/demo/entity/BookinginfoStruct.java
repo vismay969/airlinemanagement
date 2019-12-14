@@ -91,4 +91,16 @@ public class BookinginfoStruct {
     public void setUserDetailsStruct(UserDetailsStruct userDetailsStruct) {
         this.userDetailsStruct = userDetailsStruct;
     }
+
+    public int getTotal_seats() {
+        return total_seats;
+    }
+
+    public char getClass_type() {
+        return class_type;
+    }
+
+    public int getNoOfPass() {
+        return noOfPass;
+    }
 }

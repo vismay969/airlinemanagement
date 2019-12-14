@@ -88,4 +88,26 @@ public class FlightDetailStruct {
     public void setFlightMaster(FlightMasterStruct flightMaster) {
         this.flightMaster = flightMaster;
     }
+
+    public int getFlight_sch_No() {
+        return flight_sch_No;
+    }
+
+    public int getSeats_remaining_first() {
+        return seats_remaining_first;
+    }
+
+    public void setSeats_remaining_first(int seats_remaining_first) {
+        this.seats_remaining_first = seats_remaining_first;
+    }
+
+    public int getSeats_remaining_business() {
+        return seats_remaining_business;
+    }
+
+    public void setSeats_remaining_business(int seats_remaining_business) {
+        this.seats_remaining_business = seats_remaining_business;
+    }
+
+
 }
