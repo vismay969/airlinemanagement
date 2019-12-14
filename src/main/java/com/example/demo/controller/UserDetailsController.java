@@ -32,6 +32,13 @@ public class UserDetailsController {
     }
 
 
+    @GetMapping(value ="/user/{userName}")
+    public UserDetailsStruct findUserByName(@PathVariable(value = "userName") String userName)
+    {
+        return this.userDetailsService.findUserByName(userName);
+    }
+
+
     @PutMapping(value = "/user")
     public UserDetailsStruct UpdateUser(@RequestBody UserDetailsStruct userDetailsStruct) {
         System.out.println(userDetailsStruct);

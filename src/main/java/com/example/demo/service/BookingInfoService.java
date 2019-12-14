@@ -44,6 +44,7 @@ public class BookingInfoService {
 
         Optional<FlightDetailStruct> byId = flightDetailRepository.findById(flight_sch_no);
         if (!byId.isPresent()) {
+
             throw new ResourceNotFoundException("Flight with schedule " + flight_sch_no + " does not exist");
         }
         Optional<UserDetailsStruct> byUserId = userDetailsRepository.findById(userId);
