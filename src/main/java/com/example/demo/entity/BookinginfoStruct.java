@@ -47,8 +47,8 @@ public class BookinginfoStruct {
     @Column(length = 2)
     private int noOfPass;
 
-    @Column(length = 1)
-    private char class_type;
+    @Column(length = 20)
+    private String class_type;
 
     private double total_fare;
 
@@ -96,9 +96,6 @@ public class BookinginfoStruct {
         return total_seats;
     }
 
-    public char getClass_type() {
-        return class_type;
-    }
 
     public int getNoOfPass() {
         return noOfPass;

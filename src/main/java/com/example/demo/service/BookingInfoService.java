@@ -61,7 +61,7 @@ public class BookingInfoService {
 // to reduce the seats in flightDetail
 
        //System.out.println(flightDetailStruct.getSeats_remaining_business() );
-        if (bookinginfoStruct.getClass_type()=='B') {
+        if (bookinginfoStruct.getClass_type().toUpperCase().equals("BUSINESS")) {
             if (flightDetailStruct.getSeats_remaining_business() - bookinginfoStruct.getNoOfPass() >= 0) {
                 flightDetailStruct.setSeats_remaining_business(flightDetailStruct.getSeats_remaining_business() - bookinginfoStruct.getNoOfPass());
             }
