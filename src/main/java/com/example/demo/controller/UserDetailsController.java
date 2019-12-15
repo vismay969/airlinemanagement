@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin("*")
 public class UserDetailsController {
 
 
@@ -28,6 +29,13 @@ public class UserDetailsController {
     public List<UserDetailsStruct> findAllUser()
     {
         return this.userDetailsService.findAllUsers();
+    }
+
+
+    @GetMapping(value ="/user/{userName}")
+    public UserDetailsStruct findUserByName(@PathVariable(value = "userName") String userName)
+    {
+        return this.userDetailsService.findUserByName(userName);
     }
 
 

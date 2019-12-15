@@ -2,10 +2,12 @@ package com.example.demo.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin("*")
 public class LoggingController {
     Logger logger = LoggerFactory.getLogger(LoggingController.class);
 
@@ -17,7 +19,7 @@ public class LoggingController {
         logger.warn("A WARN Message");
         logger.error("An ERROR Message");
 
-        return "Howdy! Check out the Logs to see the output...";
+        return "Airline Reservation System Launched";
     }
 }
 

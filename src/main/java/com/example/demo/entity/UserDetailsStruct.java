@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -18,11 +19,12 @@ public class UserDetailsStruct {
 
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "userIdGenerator")
+    @SequenceGenerator(name = "userIdGenerator", sequenceName = "userid_seq"  , allocationSize = 1)
     @Column(precision = 5)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE )
     private Integer userId;
 
-    @Column(columnDefinition="varchar2(30)")
+    @Column(columnDefinition="varchar2(30)", unique = true)
     private String userName;
 
 
@@ -36,8 +38,7 @@ public class UserDetailsStruct {
     private String mobileNo;
 
     // for testing  @OneToMany(cascade = CascadeType.ALL , fetch =FetchType.LAZY )
-    @OneToMany
-    @JoinColumn(name = "userId", nullable = false, insertable = false, updatable = false)
+    @OneToMany(mappedBy = "userDetailsStruct" ,fetch=FetchType.LAZY)
     private List<BookinginfoStruct> bookingInfoList;
 
 /*
@@ -50,10 +51,6 @@ public class UserDetailsStruct {
     @JoinColumn(name = "ARRABBR", nullable = false)
     private List<FlightMasterStruct> flightArrList;
 */
-public Integer getUserId() {
-    return userId;
-}
-    public String getUserName() {
-        return userName;
-    }
+
+
 }
