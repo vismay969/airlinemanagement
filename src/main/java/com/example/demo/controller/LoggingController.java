@@ -19,7 +19,7 @@ public class LoggingController {
         logger.warn("A WARN Message");
         logger.error("An ERROR Message");
 
-        return "Airline Reservation System launched";
+        return "Airline Reservation System Launched";
     }
 }
 

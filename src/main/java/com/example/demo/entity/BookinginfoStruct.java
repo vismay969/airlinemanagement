@@ -8,9 +8,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
-import java.sql.Date;
-import java.sql.Timestamp;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -37,7 +35,7 @@ public class BookinginfoStruct {
 
     @NotNull
     @Column(length = 20)
-    private LocalDate flight_date;
+    private LocalDateTime flight_date;
 
     @NotNull
     @Column(length = 30)
@@ -91,7 +89,7 @@ public class BookinginfoStruct {
     public void setUserDetailsStruct(UserDetailsStruct userDetailsStruct) {
         this.userDetailsStruct = userDetailsStruct;
     }
-
+/*
     public int getTotal_seats() {
         return total_seats;
     }
@@ -99,5 +97,5 @@ public class BookinginfoStruct {
 
     public int getNoOfPass() {
         return noOfPass;
-    }
+    }*/
 }

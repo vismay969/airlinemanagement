@@ -89,7 +89,7 @@ public class FlightDetailStruct {
         this.flightMaster = flightMaster;
     }
 
-    public int getFlight_sch_No() {
+  /*  public int getFlight_sch_No() {
         return flight_sch_No;
     }
 
@@ -108,6 +108,6 @@ public class FlightDetailStruct {
     public void setSeats_remaining_business(int seats_remaining_business) {
         this.seats_remaining_business = seats_remaining_business;
     }
-
+*/
 
 }
