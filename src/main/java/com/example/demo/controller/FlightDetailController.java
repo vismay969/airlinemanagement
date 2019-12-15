@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin("*")
 public class FlightDetailController {
 
 
@@ -35,6 +36,7 @@ public class FlightDetailController {
     {
             return this.flightDetailService.getFlightDetailsById(flightSchNo);
     }
+
 
 
 }

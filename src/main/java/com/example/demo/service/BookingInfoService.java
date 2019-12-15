@@ -54,6 +54,7 @@ public class BookingInfoService {
 
         Optional<FlightDetailStruct> byId = flightDetailRepository.findById(flight_sch_no);
         if (!byId.isPresent()) {
+
             throw new ResourceNotFoundException("Flight with schedule " + flight_sch_no + " does not exist");
         }
         Optional<UserDetailsStruct> byUserId = userDetailsRepository.findById(userId);
@@ -68,6 +69,29 @@ public class BookingInfoService {
 
         bookinginfoStruct.setUserDetailsStruct(userDetailsStruct);
 
+// to reduce the seats in flightDetail
+
+       //System.out.println(flightDetailStruct.getSeats_remaining_business() );
+        if (bookinginfoStruct.getClass_type().toUpperCase().equals("BUSINESS")) {
+            if (flightDetailStruct.getSeats_remaining_business() - bookinginfoStruct.getNoOfPass() >= 0) {
+                flightDetailStruct.setSeats_remaining_business(flightDetailStruct.getSeats_remaining_business() - bookinginfoStruct.getNoOfPass());
+            }
+            else
+            {
+                throw new ResourceNotFoundException("Not enough seats available on this flight : " + flight_sch_no + " for this class : " + bookinginfoStruct.getClass_type()+" ");
+            }
+        }
+        else {
+            if (flightDetailStruct.getSeats_remaining_first() - bookinginfoStruct.getNoOfPass() >= 0) {
+                flightDetailStruct.setSeats_remaining_first(flightDetailStruct.getSeats_remaining_first() - bookinginfoStruct.getNoOfPass());
+            }
+            else
+            {
+                throw new ResourceNotFoundException("Not enough seats available on this flight : " + flight_sch_no + " for this class : " + bookinginfoStruct.getClass_type()+" ");
+            }
+        }
+        FlightDetailStruct fd = flightDetailRepository.save(flightDetailStruct);
+      //  System.out.println(flightDetailStruct.getSeats_remaining_first() + " seat first");
         return bookingInfoRepository.save(bookinginfoStruct);
     }
 

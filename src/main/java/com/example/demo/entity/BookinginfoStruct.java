@@ -73,7 +73,7 @@ public class BookinginfoStruct {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private UserDetailsStruct userDetailsStruct;
 
-//    @JsonIgnore
+    @JsonIgnore
     public FlightDetailStruct getFlightDetailStruct() {
         return flightDetailStruct;
     }
@@ -83,7 +83,7 @@ public class BookinginfoStruct {
         this.flightDetailStruct = flightDetailStruct;
     }
 
-//    @JsonIgnore
+    @JsonIgnore
     public UserDetailsStruct getUserDetailsStruct() {
         return userDetailsStruct;
     }
@@ -92,5 +92,4 @@ public class BookinginfoStruct {
     public void setUserDetailsStruct(UserDetailsStruct userDetailsStruct) {
         this.userDetailsStruct = userDetailsStruct;
     }
-
 }
