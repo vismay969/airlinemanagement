@@ -38,6 +38,12 @@ public class UserDetailsController {
         return this.userDetailsService.findUserByName(userName);
     }
 
+    @GetMapping(value ="/user/{userName}/{password}")
+    public UserDetailsStruct findUserByNamePwd(@PathVariable(value = "userName") String userName,
+                                               @PathVariable (value = "password") String password )
+    {
+        return this.userDetailsService.findUserByNamePwd(userName, password);
+    }
 
     @PutMapping(value = "/user")
     public UserDetailsStruct UpdateUser(@RequestBody UserDetailsStruct userDetailsStruct) {

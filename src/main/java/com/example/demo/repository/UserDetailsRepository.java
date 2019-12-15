@@ -11,4 +11,6 @@ import java.util.Optional;
 public interface UserDetailsRepository extends JpaRepository<UserDetailsStruct,Integer> {
 //comment
     public Optional<UserDetailsStruct> findByUserName(String userName);
+
+    Optional<UserDetailsStruct> findByUserNameAndPassword(String userName, String password);
 }

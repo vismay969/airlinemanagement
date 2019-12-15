@@ -46,4 +46,16 @@ public class UserDetailsService {
     }
 
 
+    public UserDetailsStruct findUserByNamePwd(String userName, String password) {
+
+        Optional<UserDetailsStruct> userFound = this.userDetailsRepository.findByUserNameAndPassword(userName, password);
+
+        if (!userFound.isPresent()) {
+            throw new ResourceNotFoundException("User Not found : Incorrect User Id/Credentials");
+        }
+        UserDetailsStruct userDetailsStruct = userFound.get();
+
+        return userDetailsStruct;
+
+    }
 }
