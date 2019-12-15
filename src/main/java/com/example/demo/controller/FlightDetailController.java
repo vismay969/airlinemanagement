@@ -19,9 +19,11 @@ public class FlightDetailController {
     @Autowired
     private FlightDetailService flightDetailService;
 
+
     @PostMapping(value = "/flightDetail/{flightNo}")
     public FlightDetailStruct addFlightDetail(@PathVariable(value = "flightNo") Integer flightNo, @RequestBody FlightDetailStruct flightDetailStruct) {
-            return this.flightDetailService.addFlightDetail(flightNo,flightDetailStruct);
+        return this.flightDetailService.addFlightDetail(flightNo, flightDetailStruct);
+
     }
 
     @GetMapping(value ="/flightDetail")
@@ -31,12 +33,12 @@ public class FlightDetailController {
     }
 
 
+
     @GetMapping(value ="/flightDetail/{flightSchNo}")
-    public Optional<FlightDetailStruct> findFlightDetailById(@PathVariable(value = "flightSchNo") Integer flightSchNo)
-    {
-            return this.flightDetailService.getFlightDetailsById(flightSchNo);
+    public Optional<FlightDetailStruct> findFlightDetailById(@PathVariable(value = "flightSchNo") Integer flightSchNo) {
+        return this.flightDetailService.getFlightDetailsById(flightSchNo);
+
+
     }
-
-
 
 }

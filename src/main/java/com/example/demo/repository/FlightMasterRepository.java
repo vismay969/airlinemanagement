@@ -47,4 +47,16 @@ public interface FlightMasterRepository extends JpaRepository<FlightMasterStruct
 
     public List<SearchFlightStruct> findAllWithArrDeptDate(int seatsRemainingBusiness, int seatsRemainingFirst, String arr, String dept, LocalDate  depDate);
 
+
+    @Query(value = "select distinct" +
+            " new com.example.demo.datamapping.SearchFlightStruct(" +
+            "fm.flightNo,fm.airline,fm.dept_abbr,fm.arr_abbr," +
+            "fm.noOfSeats_first,fm.noOfSeats_business," +
+            "fd.flight_sch_No,fd.dept_date,fd.dept_time,fd.arr_date," +
+            "fd.arr_time,fd.fare_first,fd.seats_remaining_first," +
+            "fd.fare_business,fd.seats_remaining_business,fd.status_flag) " +
+            " FROM FlightMasterStruct as fm join fm.flightDetailList as fd join fd.bookinginfoList as bi " +
+            " where  bi.booking_id>=?1")
+
+    public Optional<SearchFlightStruct> findFlightMasterDetailsbyBookingId(int bookingId);
 }

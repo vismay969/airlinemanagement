@@ -29,6 +29,7 @@ public class FlightMasterService {
         return this.fmRepo.findAll();
     }
 
+
     public List<SearchFlightStruct> findAllWithArrDeptDate(int seatsRemainingBusiness, int seatsRemainingFirst,  String arr, String dept, LocalDate deptDate) {
       /*  String formattedDate = deptDate.format(DateTimeFormatter.ofPattern("dd-MMM-yyyy"));
         System.out.println(formattedDate);
@@ -39,9 +40,17 @@ public class FlightMasterService {
             return this.fmRepo.findAllFlightsByDate(seatsRem, arr, dept, localDate);
 */
     }
-/*    public List<FlightMasterStruct> findFlightMasterWithArrAndDept(String arr, String dept)
-    {
-        return this.fmRepo.findAll();
-    }*/
+
+    public Optional<SearchFlightStruct> findFlightMasterDetailsbyBookingId(int bookingId) {
+      /*  String formattedDate = deptDate.format(DateTimeFormatter.ofPattern("dd-MMM-yyyy"));
+        System.out.println(formattedDate);
+        LocalDate localDate = LocalDate.parse( formattedDate , DateTimeFormatter.ofPattern("dd-MMM-yyyy"));        //2018-07-14
+        System.out.println(localDate);*/
+        return this.fmRepo.findFlightMasterDetailsbyBookingId(bookingId);
+/*
+            return this.fmRepo.findAllFlightsByDate(seatsRem, arr, dept, localDate);
+*/
+    }
+
 
 }
