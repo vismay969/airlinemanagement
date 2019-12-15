@@ -29,6 +29,7 @@ public class FlightMasterService {
         return this.fmRepo.findAll();
     }
 
+
     public List<SearchFlightStruct> findAllWithArrDeptDate(int seatsRemainingBusiness, int seatsRemainingFirst,  String arr, String dept, LocalDate deptDate) {
       /*  String formattedDate = deptDate.format(DateTimeFormatter.ofPattern("dd-MMM-yyyy"));
         System.out.println(formattedDate);
@@ -51,9 +52,5 @@ public class FlightMasterService {
 */
     }
 
-/*    public List<FlightMasterStruct> findFlightMasterWithArrAndDept(String arr, String dept)
-    {
-        return this.fmRepo.findAll();
-    }*/
 
 }

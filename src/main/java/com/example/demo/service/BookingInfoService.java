@@ -30,12 +30,9 @@ public class BookingInfoService {
 
     @Autowired
     private UserDetailsRepository userDetailsRepository;
-/*
 
-    public BookinginfoStruct addBooking( BookinginfoStruct bookinginfoStruct) {
-        return this.bookingInfoRepository.save(bookinginfoStruct);
-    }
-*/
+
+
 
 
     public List<BookinginfoStruct> findAllBooking()
