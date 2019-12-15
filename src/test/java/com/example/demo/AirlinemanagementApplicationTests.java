@@ -3,6 +3,7 @@ package com.example.demo;
 import com.example.demo.controller.AirportController;
 import com.example.demo.controller.BookingInfoController;
 import com.example.demo.controller.FlightMasterController;
+import com.example.demo.datamapping.SearchFlightStruct;
 import com.example.demo.entity.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -16,9 +17,11 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -54,7 +57,14 @@ class AirlinemanagementApplicationTests {
         this.mockMvc.perform(get("/flightMaster")).andDo(print()).andExpect(status().isOk());
      }
 
-     @Test
+
+    @Test
+    public void testFlightMasterController() throws Exception
+    {
+        assertThat(flightMasterController).isNotNull();
+    }
+
+    @Test
      public void testGetBookingInfoController() throws Exception
      {
          this.mockMvc.perform(get("/bookingInfo")).andDo(print()).andExpect(status().isOk());
@@ -69,7 +79,7 @@ class AirlinemanagementApplicationTests {
     }
 
     @Test
-    public void testPostairportController  () throws Exception
+    public void testShouldAddNewAirportPostairportController  () throws Exception
     {
         AirportStruct airportStruct = new AirportStruct(
         0,
@@ -83,69 +93,31 @@ class AirlinemanagementApplicationTests {
                 .content(asJsonString(airportStruct))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
-/*
-      .andExpect(status().isCreated())
-*/
-            .andExpect(MockMvcResultMatchers.jsonPath("$.location_abbr").exists());
+                .andExpect(MockMvcResultMatchers.jsonPath("$.location_abbr").exists());
 
-      //  this.mockMvc.perform(post("/airport?" + airportStruct)).andDo(print()).andExpect(status().isOk());
     }
-/*
-
-     @Test
-     public void testPostFlightMasterController() throws Exception
-     {
-         List<FlightDetailStruct> flightDetailStruct = (List<FlightDetailStruct>) new FlightDetailStruct();
-         FlightMasterStruct flightMasterStruct = new FlightMasterStruct(
-            0,
-            "Air India",
-            "MUM",
-            "ADI",
-            20,
-            20,
-            flightDetailStruct
-         );
-         System.out.println(flightMasterStruct);
-         this.mockMvc.perform(post("/flightMaster  " + flightMasterStruct)).andDo(print()).andExpect(status().isOk());
-     }
-*/
-/*
-
-     @Test
-     public void testAddBookingInfoController() throws Exception
-     {
-         LocalDateTime deptDate=  LocalDateTime.now();
-         FlightDetailStruct flightDetailStruct = new FlightDetailStruct();
-         UserDetailsStruct userDetailsStruct = new UserDetailsStruct();
-         BookinginfoStruct bookinginfoStruct=
-                new BookinginfoStruct(
-                0,
-                deptDate,
-                "mehernoshp@yahoo.com",
-                1,
-                "Business",
-                10550.75,
-                3,
-                "123123123",
-                "N",
-                flightDetailStruct,
-                userDetailsStruct);
-
-         this.mockMvc.perform(post("/bookingInfo/1/15 " + bookinginfoStruct)).andDo(print()).andExpect(status().isOk());
-         //  (value = "/bookingInfo/{userId}/{flight_sch_no}")
-
-     }
-*/
 
     @Test
-    public void testFlightMasterController() throws Exception
+    public void testGetShouldReturnAllFlightDetailsFlightMasterController() throws Exception
     {
-        assertThat(flightMasterController).isNotNull();
+        this.mockMvc.perform(MockMvcRequestBuilders
+                .get("/flightDetail")
+                .accept(MediaType.APPLICATION_JSON) )
+                .andDo(print())
+            .andExpect(status().isOk()) ;
     }
 
-
     @Test
-    void contextLoads() {
+    public void testGetShouldReturnListOfFlightsFlightMasterController() throws Exception
+    {
+
+
+        this.mockMvc.perform( MockMvcRequestBuilders
+                .get("/flightMaster/1/0/ADI/MUM/2019-12-31")
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+
+                .andExpect(status().isOk());
     }
 
 }
