@@ -11,6 +11,7 @@ import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -36,8 +37,8 @@ public class BookinginfoStruct {
     private int booking_id ;
 
     @NotNull
-    @Column(length = 20)
-    private LocalDate flight_date;
+    @Column(length = 20,name = "flight_date")
+    private LocalDateTime flightDate;
 
     @NotNull
     @Column(length = 30)
@@ -47,8 +48,8 @@ public class BookinginfoStruct {
     @Column(length = 2)
     private int noOfPass;
 
-    @Column(length = 1)
-    private char class_type;
+    @Column(length = 20)
+    private String class_type;
 
     private double total_fare;
 
@@ -59,20 +60,20 @@ public class BookinginfoStruct {
     private String credit_card_info;
 
 
-    @Column(length = 1)
-    private String status_flag;
+    @Column(length = 1,name = "status_flag")
+    private String statusFlag;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "flight_sch_No", nullable = false)
+    @JoinColumn(name = "flight_sch_No", nullable = false,updatable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private FlightDetailStruct flightDetailStruct;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "userId", nullable = false)
+    @JoinColumn(name = "userId", nullable = false,updatable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private UserDetailsStruct userDetailsStruct;
 
-    @JsonIgnore
+//    @JsonIgnore
     public FlightDetailStruct getFlightDetailStruct() {
         return flightDetailStruct;
     }
@@ -82,7 +83,7 @@ public class BookinginfoStruct {
         this.flightDetailStruct = flightDetailStruct;
     }
 
-    @JsonIgnore
+//    @JsonIgnore
     public UserDetailsStruct getUserDetailsStruct() {
         return userDetailsStruct;
     }
@@ -91,4 +92,5 @@ public class BookinginfoStruct {
     public void setUserDetailsStruct(UserDetailsStruct userDetailsStruct) {
         this.userDetailsStruct = userDetailsStruct;
     }
+
 }

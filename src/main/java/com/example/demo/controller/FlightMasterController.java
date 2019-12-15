@@ -53,4 +53,11 @@ public class FlightMasterController {
         }*/
         return this.flightMasterService.findAllWithArrDeptDate(seatsRemainingBusiness, seatsRemainingFirst, arr, dept, deptDate);
     }
+
+
+    @GetMapping(value = "/flightMasterBookingId/{bookingId}")
+    public Optional<SearchFlightStruct> findFlightMasterbyBookingId(@PathVariable(value = "bookingId") int bookingId){
+
+        return this.flightMasterService.findFlightMasterDetailsbyBookingId(bookingId);
+    }
 }
