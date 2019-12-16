@@ -26,7 +26,13 @@ public class FlightDetailController {
 
     }
 
-    @GetMapping(value ="/flightDetail")
+    @PutMapping(value = "/flightDetail/{flightNo}")
+    public FlightDetailStruct editFlightDetail(@PathVariable(value = "flightNo") Integer flightNo, @RequestBody FlightDetailStruct flightDetailStruct) {
+        return this.flightDetailService.addFlightDetail(flightNo, flightDetailStruct);
+    }
+
+
+        @GetMapping(value ="/flightDetail")
     public List<FlightDetailStruct> findAllFlightDetail()
     {
         return this.flightDetailService.findAllFlightDetails();
