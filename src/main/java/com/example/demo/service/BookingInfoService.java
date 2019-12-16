@@ -135,4 +135,7 @@ public class BookingInfoService {
 
     }
 
+    public List<BookinginfoStruct> findByUserId(Integer userId) {
+        return this.bookingInfoRepository.findByUserDetailsStruct_UserIdEquals(userId);
+    }
 }

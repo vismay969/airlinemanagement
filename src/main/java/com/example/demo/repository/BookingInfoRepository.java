@@ -14,4 +14,7 @@ public interface BookingInfoRepository extends JpaRepository<BookinginfoStruct,I
 //comment
 
     public List<BookinginfoStruct> findByUserDetailsStruct_UserIdEqualsAndFlightDateGreaterThanEqualAndStatusFlag(int userId, LocalDateTime lDate,String flag);
+
+
+    List<BookinginfoStruct> findByUserDetailsStruct_UserIdEquals(Integer userId);
 }
