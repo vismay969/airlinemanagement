@@ -26,7 +26,7 @@ public class Mailer {
             helper.setTo(bookinginfoStruct.getCust_email());
 */
 //            helper.setTo("somjoy.bit@gmail.com");
-            helper.setText("Test email "+emailid+" and your interview is scheduled on at 11:00 AM");
+           // helper.setText("Test email "+emailid+" and your interview is scheduled on at 11:00 AM");
             helper.setText("Flight Booking Confirmation : Departure Date/Time : "+ bookinginfoStruct.getFlightDate() +
                     " No of Seats : " + bookinginfoStruct.getNoOfPass() + " Cost Rs. "+ bookinginfoStruct.getTotal_fare() );
             helper.setSubject("Your Ticket Booking Confirmation");

@@ -56,7 +56,7 @@ public interface FlightMasterRepository extends JpaRepository<FlightMasterStruct
             "fd.arr_time,fd.fare_first,fd.seats_remaining_first," +
             "fd.fare_business,fd.seats_remaining_business,fd.status_flag) " +
             " FROM FlightMasterStruct as fm join fm.flightDetailList as fd join fd.bookinginfoList as bi " +
-            " where  bi.booking_id>=?1")
+            " where  bi.booking_id=?1")
 
     public Optional<SearchFlightStruct> findFlightMasterDetailsbyBookingId(int bookingId);
 }

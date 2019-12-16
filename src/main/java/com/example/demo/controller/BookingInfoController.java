@@ -36,6 +36,17 @@ public class BookingInfoController {
         return this.bookingInfoService.addBookingDetail(flight_sch_no, userId, bookinginfoStruct);
     }
 
+
+    @PostMapping(value = "/sendEmail/" )
+    public BookinginfoStruct sendConfirmationEmail(@RequestBody BookinginfoStruct bookinginfoStruct) {
+
+        String email = bookinginfoStruct.getCust_email();
+        mail.sendMail(email, bookinginfoStruct);
+        return bookinginfoStruct;
+
+    }
+
+
     @GetMapping(value ="/bookingInfo")
     public List<BookinginfoStruct> findAllBooking()
     {
