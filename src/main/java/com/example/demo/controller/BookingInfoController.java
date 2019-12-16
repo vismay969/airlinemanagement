@@ -31,10 +31,21 @@ public class BookingInfoController {
 
         String email = bookinginfoStruct.getCust_email();
         //LocalDate iternaryDate = bookinginfoStruct.getFlight_date();
-        mail.sendMail(email);
+        mail.sendMail(email, bookinginfoStruct);
 
         return this.bookingInfoService.addBookingDetail(flight_sch_no, userId, bookinginfoStruct);
     }
+
+
+    @PostMapping(value = "/sendEmail/" )
+    public BookinginfoStruct sendConfirmationEmail(@RequestBody BookinginfoStruct bookinginfoStruct) {
+
+        String email = bookinginfoStruct.getCust_email();
+        mail.sendMail(email, bookinginfoStruct);
+        return bookinginfoStruct;
+
+    }
+
 
     @GetMapping(value ="/bookingInfo")
     public List<BookinginfoStruct> findAllBooking()
@@ -47,13 +58,20 @@ public class BookingInfoController {
     public BookinginfoStruct updateBookingInfo(@RequestBody BookinginfoStruct bookinginfoStruct,  @PathVariable("userId") Integer userId, @PathVariable("flight_sch_no") Integer flight_sch_no) {
         return this.bookingInfoService.addBookingDetail(flight_sch_no, userId, bookinginfoStruct);
     }
-
+/*
     @GetMapping(value ="/bookingInfo/{userId}")
     public List<BookinginfoStruct> findBookingByUserIdAndDate(@PathVariable("userId") Integer userId)
     {
         LocalDateTime lDate = LocalDateTime.now();
         return this.bookingInfoService.findByUserIdandCurrentDate(userId, lDate);
+    }*/
+
+    @GetMapping(value ="/bookingInfo/{userId}")
+    public List<BookinginfoStruct> findBookingByUserId(@PathVariable("userId") Integer userId)
+    {
+        return this.bookingInfoService.findByUserId(userId);
     }
+
     @PutMapping(value = "/bookingInfo")
     public BookinginfoStruct softDeleteBookingId(@RequestBody BookinginfoStruct bookinginfoStruct) {
         return this.bookingInfoService.softDeleteBookingId(bookinginfoStruct);

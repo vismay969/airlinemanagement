@@ -46,5 +46,14 @@ public class FlightDetailController {
 
 
     }
+/*
+
+    @GetMapping(value ="/flightDetailList")
+    public List<FlightDetailStruct> findAllFlightDetailOnADay()
+    {
+        return this.flightDetailService.findAllFlightDetailsOnADay();
+    }
+*/
+
 
 }

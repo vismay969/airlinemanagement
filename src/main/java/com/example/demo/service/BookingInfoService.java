@@ -89,6 +89,7 @@ public class BookingInfoService {
         }
         FlightDetailStruct fd = flightDetailRepository.save(flightDetailStruct);
       //  System.out.println(flightDetailStruct.getSeats_remaining_first() + " seat first");
+
         return bookingInfoRepository.save(bookinginfoStruct);
     }
 
@@ -135,4 +136,7 @@ public class BookingInfoService {
 
     }
 
+    public List<BookinginfoStruct> findByUserId(Integer userId) {
+        return this.bookingInfoRepository.findByUserDetailsStruct_UserIdEqualsOrderByFlightDate(userId);
+    }
 }
