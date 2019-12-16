@@ -63,6 +63,7 @@ public class FlightDetailService {
         return this.fdRepo.findAll();
     }
 
+
 /*    public List<FlightDetailStruct> findFlightMasterWithArrAndDept(String arr, String dept)
     {
         return this.fmRepo.findByArrAbbrAndDeptAbbr(arr,dept);
