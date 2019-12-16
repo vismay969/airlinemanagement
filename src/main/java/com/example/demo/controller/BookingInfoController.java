@@ -31,7 +31,7 @@ public class BookingInfoController {
 
         String email = bookinginfoStruct.getCust_email();
         //LocalDate iternaryDate = bookinginfoStruct.getFlight_date();
-        mail.sendMail(email);
+        mail.sendMail(email, bookinginfoStruct);
 
         return this.bookingInfoService.addBookingDetail(flight_sch_no, userId, bookinginfoStruct);
     }
