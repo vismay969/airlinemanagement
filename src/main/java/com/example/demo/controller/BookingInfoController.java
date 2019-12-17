@@ -6,6 +6,8 @@ import com.example.demo.entity.BookinginfoStruct;
 import com.example.demo.service.AirportService;
 import com.example.demo.service.BookingInfoService;
 import com.example.demo.util.Mailer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,6 +19,8 @@ import java.util.Optional;
 @RestController
 @CrossOrigin("*")
 public class BookingInfoController {
+
+    Logger logger = LoggerFactory.getLogger(this.getClass());
 
 
     @Autowired
@@ -42,6 +46,7 @@ public class BookingInfoController {
 
         String email = bookinginfoStruct.getCust_email();
         mail.sendMail(email, bookinginfoStruct);
+        logger.info("Booking Confirmation Email Sent");
         return bookinginfoStruct;
 
     }

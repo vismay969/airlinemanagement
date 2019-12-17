@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @CrossOrigin("*")
 public class LoggingController {
-    Logger logger = LoggerFactory.getLogger(LoggingController.class);
+    Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @RequestMapping("/")
     public String index() {
