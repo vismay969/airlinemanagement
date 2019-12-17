@@ -6,6 +6,8 @@ import com.example.demo.entity.BookinginfoStruct;
 import com.example.demo.entity.FlightDetailStruct;
 import com.example.demo.entity.UserDetailsStruct;
 import com.example.demo.repository.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
@@ -18,6 +20,8 @@ import java.util.Optional;
 
 @Service
 public class BookingInfoService {
+
+    Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private BookingInfoRepository bookingInfoRepository;
@@ -75,6 +79,7 @@ public class BookingInfoService {
             }
             else
             {
+                logger.error("Not enough seats available on this flight : " + flight_sch_no + " for this class : " + bookinginfoStruct.getClass_type()+" ");
                 throw new ResourceNotFoundException("Not enough seats available on this flight : " + flight_sch_no + " for this class : " + bookinginfoStruct.getClass_type()+" ");
             }
         }
@@ -84,12 +89,13 @@ public class BookingInfoService {
             }
             else
             {
+                logger.error("Not enough seats available on this flight : " + flight_sch_no + " for this class : " + bookinginfoStruct.getClass_type()+" ");
                 throw new ResourceNotFoundException("Not enough seats available on this flight : " + flight_sch_no + " for this class : " + bookinginfoStruct.getClass_type()+" ");
             }
         }
         FlightDetailStruct fd = flightDetailRepository.save(flightDetailStruct);
       //  System.out.println(flightDetailStruct.getSeats_remaining_first() + " seat first");
-
+        logger.info("Booking Created");
         return bookingInfoRepository.save(bookinginfoStruct);
     }
 
@@ -111,6 +117,7 @@ public class BookingInfoService {
 
         Optional<FlightDetailStruct> byId = flightDetailRepository.findById(flightSchNo);
         if (!byId.isPresent()) {
+            logger.error("Flight details with id " + flightSchNo + " does not exist");
             throw new ResourceNotFoundException("Flight details with id " + flightSchNo + " does not exist");
         }
         FlightDetailStruct flightDetailStruct = byId.get();
@@ -130,7 +137,7 @@ public class BookingInfoService {
         BookinginfoStruct bi = this.bookingInfoRepository.save(bookinginfoStruct);
         FlightDetailStruct fd = flightDetailRepository.save(flightDetailStruct);
         //  System.out.println(flightDetailStruct.getSeats_remaining_first() + " seat first");
-
+        logger.info("Booking Cancelled");
         return bi;
 
 

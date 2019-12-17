@@ -2,6 +2,8 @@ package com.example.demo.service;
 
 import com.example.demo.entity.UserDetailsStruct;
 import com.example.demo.repository.UserDetailsRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
@@ -12,12 +14,22 @@ import java.util.Optional;
 
 @Service
 public class UserDetailsService {
+    Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private UserDetailsRepository userDetailsRepository;
 
     public UserDetailsStruct addUser( UserDetailsStruct userDetailsStruct) {
-        return this.userDetailsRepository.save(userDetailsStruct);
+        logger.info("Adding new user");
+        try {
+            UserDetailsStruct userCreated = this.userDetailsRepository.save(userDetailsStruct);
+            return userCreated;
+        } catch (Exception e) {
+            logger.error("User creation failed : ",e);
+            throw new ResourceNotFoundException("User Creation failed ");
+           // e.printStackTrace();
+        }
+
     }
 
 
